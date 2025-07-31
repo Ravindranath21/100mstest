@@ -5,8 +5,8 @@
   "license": "ISC",
   "description": "Frontend project with HTML, CSS, JS",
   "scripts": {
-    "start": "live-server src --port=3000 --open",
-    "dev": "live-server src --port=3000 --open --watch=src",
+    "start": "npx parcel src/index.html --port 3001",
+    "dev": "npx parcel src/index.html --port 3001",
     "build": "npm run clean && npm run copy && npm run minify",
     "clean": "rimraf dist",
     "copy": "copyfiles -u 1 'src/**/*' dist",
@@ -24,16 +24,20 @@
     "optimize": "imagemin 'src/images/*' --out-dir=dist/images"
   },
   "devDependencies": {
-    "live-server": "^1.2.2",
-    "copyfiles": "^2.4.1",
-    "rimraf": "^5.0.5",
     "clean-css-cli": "^5.6.2",
-    "terser": "^5.19.4",
     "concurrently": "^8.2.2",
-    "nodemon": "^3.0.1",
+    "copyfiles": "^2.4.1",
     "eslint": "^8.50.0",
-    "prettier": "^3.0.3",
     "html-validate": "^8.5.0",
-    "imagemin-cli": "^7.0.0"
+    "imagemin-cli": "^7.0.0",
+    "live-server": "^1.2.2",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.3",
+    "rimraf": "^5.0.5",
+    "terser": "^5.19.4"
+  },
+  "dependencies": {
+    "@100mslive/hms-video": "^0.9.28",
+    "@100mslive/hms-video-store": "^0.12.35"
   }
 }

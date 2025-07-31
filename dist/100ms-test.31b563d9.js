@@ -160,11 +160,11 @@
       });
     }
   }
-})({"cRH9c":[function(require,module,exports,__globalThis) {
+})({"1qaS4":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
-var HMR_SERVER_PORT = 3000;
+var HMR_SERVER_PORT = 3001;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "439701173a9199ea";
 var HMR_USE_SSE = false;
@@ -688,7 +688,7 @@ const renderedPeerIDs = new Set();
 joinBtn.onclick = async ()=>{
     const roomCode = document.getElementById("room-code").value;
     const userName = document.getElementById("name").value;
-    const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2ZXJzaW9uIjoyLCJ0eXBlIjoiYXBwIiwiYXBwX2RhdGEiOm51bGwsImFjY2Vzc19rZXkiOiI2ODhhMGM1ZTE0NWNiNGU4NDQ5YjA2YTMiLCJyb2xlIjoiaG9zdCIsInJvb21faWQiOiI2ODhiMTExNmE1YmE4MzI2ZTZlYjU1ZjUiLCJ1c2VyX2lkIjoiMGIzMzA4ODYtZmYxNi00MjQ3LTkwZGUtZGZkNTE3NzYyYTA5IiwiZXhwIjoxNzU0MDMwNzQyLCJqdGkiOiI0NGM2ODZkYS1iYWM5LTQwNTQtOTg2OS01ZTJjYmY0NzBiN2IiLCJpYXQiOjE3NTM5NDQzNDIsImlzcyI6IjY4OGEwYzVlMTQ1Y2I0ZTg0NDliMDZhMSIsIm5iZiI6MTc1Mzk0NDM0Miwic3ViIjoiYXBpIn0.LTbuXBi3IVmMUUtnFCszBUZavO1bKTwKqPoa7Jx5H3I";
+    const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2ZXJzaW9uIjoyLCJ0eXBlIjoiYXBwIiwiYXBwX2RhdGEiOm51bGwsImFjY2Vzc19rZXkiOiI2ODhhMGM1ZTE0NWNiNGU4NDQ5YjA2YTMiLCJyb2xlIjoiaG9zdCIsInJvb21faWQiOiI2ODhiMThjY2E1YmE4MzI2ZTZlYjU1ZjgiLCJ1c2VyX2lkIjoiMzYxM2FjYTAtMTA3Ny00N2E3LThiYTAtOGNlYzNiYmMwMTQxIiwiZXhwIjoxNzU0MDMyNzE3LCJqdGkiOiJlM2QxOGMwNi1lMzBmLTQ0OWEtYTk3MC02MDA2MWJlMGNkMWEiLCJpYXQiOjE3NTM5NDYzMTcsImlzcyI6IjY4OGEwYzVlMTQ1Y2I0ZTg0NDliMDZhMSIsIm5iZiI6MTc1Mzk0NjMxNywic3ViIjoiYXBpIn0.QLVSURr65M8rOPXy8yJsffLCXGqxMVFHi9ELunAv66A";
     hmsActions.join({
         userName,
         authToken
@@ -13850,7 +13850,7 @@ var Un = (a)=>a.localPeer.id, Bn = (a)=>a.localPeer.audioTrack, Vn = (a)=>a.loca
     localVideoTrackStats: rc
 };
 
-},{"4e18345d8e205b4a":"euskh","reselect":"gWNo9","ua-parser-js":"dB36x","uuid":"f1qTK","lodash.isequal":"97Naw","webrtc-adapter":"27l12","eventemitter2":"bLuyj","immer":"7ADmA","zustand/shallow":"5XiGX","zustand/vanilla":"folPr","sdp-transform":"jUb7g","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"euskh":[function(require,module,exports,__globalThis) {
+},{"4e18345d8e205b4a":"euskh","reselect":"gWNo9","ua-parser-js":"dB36x","uuid":"f1qTK","lodash.isequal":"97Naw","webrtc-adapter":"27l12","eventemitter2":"bLuyj","immer":"7ADmA","zustand/shallow":"5XiGX","zustand/vanilla":"folPr","sdp-transform":"jUb7g","@parcel/transformer-js/src/esmodule-helpers.js":"glwFn"}],"euskh":[function(require,module,exports,__globalThis) {
 // shim for using process in browser
 var process = module.exports = {};
 // cached from whatever global is present so that test runners that stub it
@@ -14088,7 +14088,7 @@ function createStructuredSelector(selectors) {
     });
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"jnFvT":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"glwFn"}],"glwFn":[function(require,module,exports,__globalThis) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -16811,7 +16811,7 @@ var _stringifyJsDefault = parcelHelpers.interopDefault(_stringifyJs);
 var _parseJs = require("./parse.js");
 var _parseJsDefault = parcelHelpers.interopDefault(_parseJs);
 
-},{"./v1.js":false,"./v3.js":false,"./v4.js":"7Sd5x","./v5.js":false,"./nil.js":false,"./version.js":false,"./validate.js":false,"./stringify.js":false,"./parse.js":false,"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"7Sd5x":[function(require,module,exports,__globalThis) {
+},{"./v1.js":false,"./v3.js":false,"./v4.js":"7Sd5x","./v5.js":false,"./nil.js":false,"./version.js":false,"./validate.js":false,"./stringify.js":false,"./parse.js":false,"@parcel/transformer-js/src/esmodule-helpers.js":"glwFn"}],"7Sd5x":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _rngJs = require("./rng.js");
@@ -16832,7 +16832,7 @@ function v4(options, buf, offset) {
 }
 exports.default = v4;
 
-},{"./rng.js":"aMz2Q","./stringify.js":"9dsAN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"aMz2Q":[function(require,module,exports,__globalThis) {
+},{"./rng.js":"aMz2Q","./stringify.js":"9dsAN","@parcel/transformer-js/src/esmodule-helpers.js":"glwFn"}],"aMz2Q":[function(require,module,exports,__globalThis) {
 // Unique ID creation requires a high quality random # generator. In the browser we therefore
 // require the crypto API and do not support built-in fallback to lower quality random number
 // generators (like Math.random()).
@@ -16852,7 +16852,7 @@ function rng() {
     return getRandomValues(rnds8);
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"9dsAN":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"glwFn"}],"9dsAN":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _validateJs = require("./validate.js");
@@ -16876,7 +16876,7 @@ function stringify(arr) {
 }
 exports.default = stringify;
 
-},{"./validate.js":"3wmxZ","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"3wmxZ":[function(require,module,exports,__globalThis) {
+},{"./validate.js":"3wmxZ","@parcel/transformer-js/src/esmodule-helpers.js":"glwFn"}],"3wmxZ":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _regexJs = require("./regex.js");
@@ -16886,12 +16886,12 @@ function validate(uuid) {
 }
 exports.default = validate;
 
-},{"./regex.js":"9mE1W","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"9mE1W":[function(require,module,exports,__globalThis) {
+},{"./regex.js":"9mE1W","@parcel/transformer-js/src/esmodule-helpers.js":"glwFn"}],"9mE1W":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 exports.default = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"97Naw":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"glwFn"}],"97Naw":[function(require,module,exports,__globalThis) {
 /**
  * Lodash (Custom Build) <https://lodash.com/>
  * Build: `lodash modularize exports="npm" -o ./`
@@ -18281,7 +18281,7 @@ const adapter = (0, _adapterFactoryJs.adapterFactory)({
 });
 exports.default = adapter;
 
-},{"./adapter_factory.js":"fshKD","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"fshKD":[function(require,module,exports,__globalThis) {
+},{"./adapter_factory.js":"fshKD","@parcel/transformer-js/src/esmodule-helpers.js":"glwFn"}],"fshKD":[function(require,module,exports,__globalThis) {
 /*
  *  Copyright (c) 2016 The WebRTC project authors. All Rights Reserved.
  *
@@ -18408,7 +18408,7 @@ function adapterFactory({ window } = {}, options = {
     return adapter;
 }
 
-},{"./utils":"130jN","./chrome/chrome_shim":"gnS8k","./firefox/firefox_shim":"bXIO7","./safari/safari_shim":"8DlmS","./common_shim":"bXwPT","sdp":"ipaHk","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"130jN":[function(require,module,exports,__globalThis) {
+},{"./utils":"130jN","./chrome/chrome_shim":"gnS8k","./firefox/firefox_shim":"bXIO7","./safari/safari_shim":"8DlmS","./common_shim":"bXwPT","sdp":"ipaHk","@parcel/transformer-js/src/esmodule-helpers.js":"glwFn"}],"130jN":[function(require,module,exports,__globalThis) {
 /*
  *  Copyright (c) 2016 The WebRTC project authors. All Rights Reserved.
  *
@@ -18607,7 +18607,7 @@ function filterStats(result, track, outbound) {
     return filteredResult;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"gnS8k":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"glwFn"}],"gnS8k":[function(require,module,exports,__globalThis) {
 /*
  *  Copyright (c) 2016 The WebRTC project authors. All Rights Reserved.
  *
@@ -19155,7 +19155,7 @@ function fixNegotiationNeeded(window, browserDetails) {
     });
 }
 
-},{"../utils.js":"130jN","./getusermedia":"4J7EJ","./getdisplaymedia":"lGPez","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"4J7EJ":[function(require,module,exports,__globalThis) {
+},{"../utils.js":"130jN","./getusermedia":"4J7EJ","./getdisplaymedia":"lGPez","@parcel/transformer-js/src/esmodule-helpers.js":"glwFn"}],"4J7EJ":[function(require,module,exports,__globalThis) {
 /*
  *  Copyright (c) 2016 The WebRTC project authors. All Rights Reserved.
  *
@@ -19316,7 +19316,7 @@ function shimGetUserMedia(window, browserDetails) {
     }
 }
 
-},{"../utils.js":"130jN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"lGPez":[function(require,module,exports,__globalThis) {
+},{"../utils.js":"130jN","@parcel/transformer-js/src/esmodule-helpers.js":"glwFn"}],"lGPez":[function(require,module,exports,__globalThis) {
 /*
  *  Copyright (c) 2018 The adapter.js project authors. All Rights Reserved.
  *
@@ -19355,7 +19355,7 @@ function shimGetDisplayMedia(window, getSourceId) {
     };
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"bXIO7":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"glwFn"}],"bXIO7":[function(require,module,exports,__globalThis) {
 /*
  *  Copyright (c) 2016 The WebRTC project authors. All Rights Reserved.
  *
@@ -19585,7 +19585,7 @@ function shimCreateAnswer(window) {
     };
 }
 
-},{"../utils":"130jN","./getusermedia":"gxNeY","./getdisplaymedia":"kGvxK","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"gxNeY":[function(require,module,exports,__globalThis) {
+},{"../utils":"130jN","./getusermedia":"gxNeY","./getdisplaymedia":"kGvxK","@parcel/transformer-js/src/esmodule-helpers.js":"glwFn"}],"gxNeY":[function(require,module,exports,__globalThis) {
 /*
  *  Copyright (c) 2016 The WebRTC project authors. All Rights Reserved.
  *
@@ -19646,7 +19646,7 @@ function shimGetUserMedia(window, browserDetails) {
     }
 }
 
-},{"../utils":"130jN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"kGvxK":[function(require,module,exports,__globalThis) {
+},{"../utils":"130jN","@parcel/transformer-js/src/esmodule-helpers.js":"glwFn"}],"kGvxK":[function(require,module,exports,__globalThis) {
 /*
  *  Copyright (c) 2018 The adapter.js project authors. All Rights Reserved.
  *
@@ -19676,7 +19676,7 @@ function shimGetDisplayMedia(window, preferredMediaSource) {
     };
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"8DlmS":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"glwFn"}],"8DlmS":[function(require,module,exports,__globalThis) {
 /*
  *  Copyright (c) 2016 The WebRTC project authors. All Rights Reserved.
  *
@@ -19932,7 +19932,7 @@ function shimAudioContext(window) {
     window.AudioContext = window.webkitAudioContext;
 }
 
-},{"../utils":"130jN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"bXwPT":[function(require,module,exports,__globalThis) {
+},{"../utils":"130jN","@parcel/transformer-js/src/esmodule-helpers.js":"glwFn"}],"bXwPT":[function(require,module,exports,__globalThis) {
 /*
  *  Copyright (c) 2017 The WebRTC project authors. All Rights Reserved.
  *
@@ -20280,7 +20280,7 @@ function shimParameterlessSetLocalDescription(window, browserDetails) {
     };
 }
 
-},{"sdp":"ipaHk","./utils":"130jN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"ipaHk":[function(require,module,exports,__globalThis) {
+},{"sdp":"ipaHk","./utils":"130jN","@parcel/transformer-js/src/esmodule-helpers.js":"glwFn"}],"ipaHk":[function(require,module,exports,__globalThis) {
 /* eslint-env node */ 'use strict';
 // SDP helpers.
 const SDPUtils = {};
@@ -23022,7 +23022,7 @@ var un = function() {
 }(), an = new un, fn = an.produce, cn = an.produceWithPatches.bind(an), sn = an.setAutoFreeze.bind(an), vn = an.setUseProxies.bind(an), pn = an.applyPatches.bind(an), ln = an.createDraft.bind(an), dn = an.finishDraft.bind(an);
 exports.default = fn;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"5XiGX":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"glwFn"}],"5XiGX":[function(require,module,exports,__globalThis) {
 'use strict';
 Object.defineProperty(exports, '__esModule', {
     value: true
@@ -23908,6 +23908,6 @@ module.exports = function(session, opts) {
     return sdp.join('\r\n') + '\r\n';
 };
 
-},{"b6479ef68fdecd9":"lEW9g"}]},["cRH9c","a0t4e"], "a0t4e", "parcelRequirec265", {})
+},{"b6479ef68fdecd9":"lEW9g"}]},["1qaS4","a0t4e"], "a0t4e", "parcelRequirec265", {})
 
 //# sourceMappingURL=100ms-test.31b563d9.js.map
