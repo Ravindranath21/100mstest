@@ -1,0 +1,17 @@
+{
+  "name": "100ms-test",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "parcel": "^2.15.4",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "@100mslive/hms-video-store": "^0.12.35"
+  }
+}
