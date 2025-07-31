@@ -31,7 +31,7 @@ import {
     const roomCode = document.getElementById("room-code").value
     const userName = document.getElementById("name").value
     const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2ZXJzaW9uIjoyLCJ0eXBlIjoiYXBwIiwiYXBwX2RhdGEiOm51bGwsImFjY2Vzc19rZXkiOiI2ODhhMGM1ZTE0NWNiNGU4NDQ5YjA2YTMiLCJyb2xlIjoiaG9zdCIsInJvb21faWQiOiI2ODhiMThjY2E1YmE4MzI2ZTZlYjU1ZjgiLCJ1c2VyX2lkIjoiMzYxM2FjYTAtMTA3Ny00N2E3LThiYTAtOGNlYzNiYmMwMTQxIiwiZXhwIjoxNzU0MDMyNzE3LCJqdGkiOiJlM2QxOGMwNi1lMzBmLTQ0OWEtYTk3MC02MDA2MWJlMGNkMWEiLCJpYXQiOjE3NTM5NDYzMTcsImlzcyI6IjY4OGEwYzVlMTQ1Y2I0ZTg0NDliMDZhMSIsIm5iZiI6MTc1Mzk0NjMxNywic3ViIjoiYXBpIn0.QLVSURr65M8rOPXy8yJsffLCXGqxMVFHi9ELunAv66A"
-  
+    console.log(authToken);
     hmsActions.join({
       userName,
       authToken
