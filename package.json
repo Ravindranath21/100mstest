@@ -1,18 +1,39 @@
 {
   "name": "100ms-test",
   "version": "1.0.0",
-  "scripts": {
-    "build": "parcel build src/index.html",
-    "start": "parcel src/index.html"
-  },
   "author": "",
   "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "parcel": "^2.15.4",
-    "process": "^0.11.10"
+  "description": "Frontend project with HTML, CSS, JS",
+  "scripts": {
+    "start": "live-server src --port=3000 --open",
+    "dev": "live-server src --port=3000 --open --watch=src",
+    "build": "npm run clean && npm run copy && npm run minify",
+    "clean": "rimraf dist",
+    "copy": "copyfiles -u 1 'src/**/*' dist",
+    "minify": "npm run minify:css && npm run minify:js",
+    "minify:css": "cleancss -o dist/style.min.css src/style.css",
+    "minify:js": "terser src/script.js -o dist/script.min.js",
+    "watch": "concurrently \"npm run watch:css\" \"npm run watch:js\"",
+    "watch:css": "nodemon --watch src/*.css --exec \"npm run minify:css\"",
+    "watch:js": "nodemon --watch src/*.js --exec \"npm run minify:js\"",
+    "lint": "eslint src/*.js",
+    "lint:fix": "eslint src/*.js --fix",
+    "format": "prettier --write src/",
+    "serve:build": "live-server dist --port=8080",
+    "validate": "html-validate src/*.html",
+    "optimize": "imagemin 'src/images/*' --out-dir=dist/images"
   },
-  "dependencies": {
-    "@100mslive/hms-video-store": "^0.12.35"
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "copyfiles": "^2.4.1",
+    "rimraf": "^5.0.5",
+    "clean-css-cli": "^5.6.2",
+    "terser": "^5.19.4",
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.0.1",
+    "eslint": "^8.50.0",
+    "prettier": "^3.0.3",
+    "html-validate": "^8.5.0",
+    "imagemin-cli": "^7.0.0"
   }
 }

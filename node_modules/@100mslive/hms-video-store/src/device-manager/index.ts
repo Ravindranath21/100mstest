@@ -1,1 +1,0 @@
-export { DeviceManager } from './DeviceManager';
