@@ -675,7 +675,6 @@ const hmsStore = hmsManager.getStore();
 const hmsActions = hmsManager.getActions();
 // HTML elements
 const form = document.getElementById("join");
-const joinBtn = document.getElementById("join-btn");
 const conference = document.getElementById("conference");
 const peersContainer = document.getElementById("peers-container");
 const leaveBtn = document.getElementById("leave-btn");
@@ -684,18 +683,27 @@ const muteVideo = document.getElementById("mute-vid");
 const controls = document.getElementById("controls");
 // store peer IDs already rendered to avoid re-render on mute/unmute
 const renderedPeerIDs = new Set();
-console.log("hi");
 // Joining the room
-joinBtn.onclick = async ()=>{
-    const roomCode = document.getElementById("room-code").value;
-    const userName = document.getElementById("name").value;
-    const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2ZXJzaW9uIjoyLCJ0eXBlIjoiYXBwIiwiYXBwX2RhdGEiOm51bGwsImFjY2Vzc19rZXkiOiI2ODhhMGM1ZTE0NWNiNGU4NDQ5YjA2YTMiLCJyb2xlIjoiaG9zdCIsInJvb21faWQiOiI2ODhiMThjY2E1YmE4MzI2ZTZlYjU1ZjgiLCJ1c2VyX2lkIjoiMzYxM2FjYTAtMTA3Ny00N2E3LThiYTAtOGNlYzNiYmMwMTQxIiwiZXhwIjoxNzU0MDMyNzE3LCJqdGkiOiJlM2QxOGMwNi1lMzBmLTQ0OWEtYTk3MC02MDA2MWJlMGNkMWEiLCJpYXQiOjE3NTM5NDYzMTcsImlzcyI6IjY4OGEwYzVlMTQ1Y2I0ZTg0NDliMDZhMSIsIm5iZiI6MTc1Mzk0NjMxNywic3ViIjoiYXBpIn0.QLVSURr65M8rOPXy8yJsffLCXGqxMVFHi9ELunAv66A";
-    console.log(authToken);
-    hmsActions.join({
+// Function to get query params
+function getQueryParam(key) {
+    const params = new URLSearchParams(window.location.search);
+    return params.get(key);
+}
+// Extract values
+const authToken = getQueryParam("authToken");
+const userName = getQueryParam("userName") || "Guest";
+// Auto join if authToken is available
+window.addEventListener("DOMContentLoaded", async ()=>{
+    if (!authToken) {
+        console.error("Auth token missing in query params");
+        return;
+    }
+    console.log("Joining room with token:", authToken);
+    await hmsActions.join({
         userName,
         authToken
     });
-};
+});
 // Leaving the room
 async function leaveRoom() {
     await hmsActions.leave();
