@@ -25,7 +25,7 @@ import {
   
   // store peer IDs already rendered to avoid re-render on mute/unmute
   const renderedPeerIDs = new Set();
-  
+  console.log("hi");
   // Joining the room
   joinBtn.onclick = async () => {
     const roomCode = document.getElementById("room-code").value
