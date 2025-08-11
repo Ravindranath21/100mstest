@@ -1,26 +1,85 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Quickstart JS</title>
-    <link rel="stylesheet" href="./styles.css" />
-    <meta charset="UTF-8" />
-  </head>
+<head>
+<title>Meet</title>
+<link rel="stylesheet" href="./styles.css" />
+<meta charset="UTF-8" />
+</head>
+<body>
+<header>
+<button id="leave-btn" class="btn-danger">Leave Room</button>
+</header>
 
-  <body>
-    <header>
-      <img class="logo" src="https://www.100ms.live/assets/logo.svg" />
-      <button id="leave-btn" class="btn-danger hide">Leave Room</button>
-    </header>
-    <div id="conference" class="conference-section">
-      <h2>Conference</h2>
-      <div id="peers-container"></div>
-    </div>
+<div id="rejoin-screen" class="rejoin-screen hide">
+<div class="rejoin-container">
+<div class="rejoin-icon">
+<svg width="64" height="64" fill="currentColor" viewBox="0 0 24 24">
+<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+</svg>
+</div>
+<h2>You left the meeting</h2>
+<p>Ready to rejoin the conference?</p>
+<div class="timer-container">
+<div class="timer-circle">
+<svg width="80" height="80" class="timer-svg">
+<circle cx="40" cy="40" r="36" class="timer-track"></circle>
+<circle cx="40" cy="40" r="36" class="timer-progress" id="timer-progress"></circle>
+</svg>
+<div class="timer-text" id="timer-text">120</div>
+</div>
+<p class="timer-label">seconds remaining</p>
+</div>
+<button id="rejoin-btn" class="btn-primary rejoin-btn">
+<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+<path d="M19 12h-2v3h-3v2h5v-5zM7 9h3V7H5v5h2V9z"/>
+</svg>
+Rejoin Meeting
+</button>
+</div>
+</div>
 
-    <div id="controls" class="control-bar hide">
-      <button id="mute-aud" class="btn-control">Mute</button>
-      <button id="mute-vid" class="btn-control">Hide</button>
-    </div>
+<div id="timeout-screen" class="timeout-screen hide">
+<div class="timeout-container">
+<div class="timeout-icon">
+<svg width="64" height="64" fill="currentColor" viewBox="0 0 24 24">
+<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+</svg>
+</div>
+<h2>Meeting Cannot Be Joined</h2>
+<p>The rejoin time limit has expired. Please start a new meeting or get a fresh link.</p>
+<button onclick="window.location.reload()" class="btn-secondary timeout-btn">
+<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+<path d="M4 12a8 8 0 0 1 8-8V2.5L16 6l-4 3.5V8a6 6 0 1 0 6 6h1.5a7.5 7.5 0 1 1-7.5-7.5z"/>
+</svg>
+Refresh Page
+</button>
+</div>
+</div>
 
-    <script type="module" src="./index.js"></script>
-  </body>
+<div id="conference" class="conference-section">
+<h2>Conference</h2>
+<div id="peers-container"></div>
+</div>
+
+<div id="controls" class="control-bar">
+<button id="mute-aud" class="btn-control">
+<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+<path d="M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/>
+<path d="M19 10v1a7 7 0 0 1-14 0v-1"/>
+<path d="M12 18v4"/>
+<path d="M8 22h8"/>
+</svg>
+<span>Mute</span>
+</button>
+<button id="mute-vid" class="btn-control">
+<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+<path d="M23 7l-7 5 7 5V7z"/>
+<rect width="15" height="9" x="1" y="8" rx="2" ry="2"/>
+</svg>
+<span>Hide</span>
+</button>
+</div>
+
+<script type="module" src="./index.js"></script>
+</body>
 </html>

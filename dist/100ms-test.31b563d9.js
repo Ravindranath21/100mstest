@@ -674,13 +674,23 @@ hmsManager.triggerOnSubscribe();
 const hmsStore = hmsManager.getStore();
 const hmsActions = hmsManager.getActions();
 // HTML elements
-const form = document.getElementById("join");
-const conference = document.getElementById("conference");
-const peersContainer = document.getElementById("peers-container");
-const leaveBtn = document.getElementById("leave-btn");
-const muteAudio = document.getElementById("mute-aud");
-const muteVideo = document.getElementById("mute-vid");
-const controls = document.getElementById("controls");
+let form, conference, peersContainer, leaveBtn, muteAudio, muteVideo, controls, rejoinScreen, rejoinBtn, timeoutScreen;
+// Timer variables
+let rejoinTimer = null;
+let timeRemaining = 120;
+// Initialize DOM elements after page load
+function initializeElements() {
+    form = document.getElementById("join");
+    conference = document.getElementById("conference");
+    peersContainer = document.getElementById("peers-container");
+    leaveBtn = document.getElementById("leave-btn");
+    muteAudio = document.getElementById("mute-aud");
+    muteVideo = document.getElementById("mute-vid");
+    controls = document.getElementById("controls");
+    rejoinScreen = document.getElementById("rejoin-screen");
+    rejoinBtn = document.getElementById("rejoin-btn");
+    timeoutScreen = document.getElementById("timeout-screen");
+}
 // store peer IDs already rendered to avoid re-render on mute/unmute
 const renderedPeerIDs = new Set();
 // Joining the room
@@ -694,6 +704,21 @@ const authToken = getQueryParam("authToken");
 const userName = getQueryParam("userName") || "Guest";
 // Auto join if authToken is available
 window.addEventListener("DOMContentLoaded", async ()=>{
+    // Initialize DOM elements first
+    initializeElements();
+    // Set up event listeners
+    leaveBtn.onclick = leaveRoom;
+    rejoinBtn.onclick = rejoinRoom;
+    muteAudio.onclick = async ()=>{
+        const audioEnabled = !hmsStore.getState((0, _hmsVideoStore.selectIsLocalAudioEnabled));
+        await hmsActions.setLocalAudioEnabled(audioEnabled);
+        muteAudio.querySelector('span').textContent = audioEnabled ? "Mute" : "Unmute";
+    };
+    muteVideo.onclick = async ()=>{
+        const videoEnabled = !hmsStore.getState((0, _hmsVideoStore.selectIsLocalVideoEnabled));
+        await hmsActions.setLocalVideoEnabled(videoEnabled);
+        muteVideo.querySelector('span').textContent = videoEnabled ? "Hide" : "Unhide";
+    };
     if (!authToken) {
         console.error("Auth token missing in query params");
         return;
@@ -704,14 +729,89 @@ window.addEventListener("DOMContentLoaded", async ()=>{
         authToken
     });
 });
+// Timer functions
+function startRejoinTimer() {
+    timeRemaining = 120;
+    updateTimerDisplay();
+    rejoinTimer = setInterval(()=>{
+        timeRemaining--;
+        updateTimerDisplay();
+        if (timeRemaining <= 0) {
+            clearInterval(rejoinTimer);
+            showTimeoutScreen();
+        }
+    }, 1000);
+}
+function updateTimerDisplay() {
+    const timerText = document.getElementById("timer-text");
+    const timerProgress = document.getElementById("timer-progress");
+    if (timerText) timerText.textContent = timeRemaining;
+    if (timerProgress) {
+        const circumference = 226.2; // 2 * π * 36
+        const progress = timeRemaining / 120 * circumference;
+        timerProgress.style.strokeDashoffset = circumference - progress;
+        // Change color when time is running low
+        if (timeRemaining <= 30) {
+            timerProgress.style.stroke = "#f56565";
+            timerText.style.color = "#f56565";
+        } else {
+            timerProgress.style.stroke = "#4299e1";
+            timerText.style.color = "#2d3748";
+        }
+    }
+}
+function stopRejoinTimer() {
+    if (rejoinTimer) {
+        clearInterval(rejoinTimer);
+        rejoinTimer = null;
+    }
+}
 // Leaving the room
 async function leaveRoom() {
     await hmsActions.leave();
     peersContainer.innerHTML = "";
+    renderedPeerIDs.clear();
+    // Show rejoin screen instead of form
+    showRejoinScreen();
+}
+// Show rejoin screen
+function showRejoinScreen() {
+    if (form) form.classList.add("hide");
+    if (conference) conference.classList.add("hide");
+    if (leaveBtn) leaveBtn.classList.add("hide");
+    if (controls) controls.classList.add("hide");
+    if (timeoutScreen) timeoutScreen.classList.add("hide");
+    if (rejoinScreen) rejoinScreen.classList.remove("hide");
+    // Start the timer
+    startRejoinTimer();
+}
+// Show timeout screen
+function showTimeoutScreen() {
+    if (form) form.classList.add("hide");
+    if (conference) conference.classList.add("hide");
+    if (leaveBtn) leaveBtn.classList.add("hide");
+    if (controls) controls.classList.add("hide");
+    if (rejoinScreen) rejoinScreen.classList.add("hide");
+    if (timeoutScreen) timeoutScreen.classList.remove("hide");
+    // Stop the timer
+    stopRejoinTimer();
+}
+// Rejoin the room
+async function rejoinRoom() {
+    if (!authToken) {
+        console.error("Auth token missing for rejoin");
+        return;
+    }
+    // Stop the timer when rejoining
+    stopRejoinTimer();
+    console.log("Rejoining room with token:", authToken);
+    await hmsActions.join({
+        userName,
+        authToken
+    });
 }
 // Cleanup if user refreshes the tab or navigates away
 window.onunload = window.onbeforeunload = leaveRoom;
-leaveBtn.onclick = leaveRoom;
 // Helper function to create html elements
 function createElementWithClass(tag, className) {
     const newElement = document.createElement(tag);
@@ -746,30 +846,25 @@ function renderPeers() {
 }
 // Reactive state - renderPeers is called whenever there is a change in the peer-list
 hmsStore.subscribe(renderPeers, (0, _hmsVideoStore.selectPeers));
-// Mute and unmute audio
-muteAudio.onclick = async ()=>{
-    const audioEnabled = !hmsStore.getState((0, _hmsVideoStore.selectIsLocalAudioEnabled));
-    await hmsActions.setLocalAudioEnabled(audioEnabled);
-    muteAudio.textContent = audioEnabled ? "Mute" : "Unmute";
-};
-// Mute and unmute video
-muteVideo.onclick = async ()=>{
-    const videoEnabled = !hmsStore.getState((0, _hmsVideoStore.selectIsLocalVideoEnabled));
-    await hmsActions.setLocalVideoEnabled(videoEnabled);
-    muteVideo.textContent = videoEnabled ? "Hide" : "Unhide";
-};
 // Showing the required elements on connection/disconnection
 function onConnection(isConnected) {
     if (isConnected) {
-        form.classList.add("hide");
-        conference.classList.remove("hide");
-        leaveBtn.classList.remove("hide");
-        controls.classList.remove("hide");
+        // Stop timer when successfully connected
+        stopRejoinTimer();
+        if (form) form.classList.add("hide");
+        if (rejoinScreen) rejoinScreen.classList.add("hide");
+        if (timeoutScreen) timeoutScreen.classList.add("hide");
+        if (conference) conference.classList.remove("hide");
+        if (leaveBtn) leaveBtn.classList.remove("hide");
+        if (controls) controls.classList.remove("hide");
     } else {
-        form.classList.remove("hide");
-        conference.classList.add("hide");
-        leaveBtn.classList.add("hide");
-        controls.classList.add("hide");
+        // Only show form if we haven't left the room manually
+        if (rejoinScreen && !rejoinScreen.classList.contains("hide")) return; // Keep rejoin screen visible
+        if (timeoutScreen && !timeoutScreen.classList.contains("hide")) return; // Keep timeout screen visible
+        if (form) form.classList.remove("hide");
+        if (conference) conference.classList.add("hide");
+        if (leaveBtn) leaveBtn.classList.add("hide");
+        if (controls) controls.classList.add("hide");
     }
 }
 // Listen to the connection state
