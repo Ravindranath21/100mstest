@@ -23,11 +23,20 @@ h5 {
 header {
   padding: 20px 30px;
   display: flex;
+  flex-direction: row;
   justify-content: flex-end;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  gap: 16px,
+}
+
+.header-control-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 16px
 }
 
 .btn-danger {
@@ -245,7 +254,7 @@ form h2,
   border: none;
   width: 80px;
   height: 80px;
-  border-radius: 50%;
+  border-radius: 20%;
   display: flex;
   flex-direction: column;
   align-items: center;

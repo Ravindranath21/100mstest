@@ -678,6 +678,42 @@ let form, conference, peersContainer, leaveBtn, muteAudio, muteVideo, controls, 
 // Timer variables
 let rejoinTimer = null;
 let timeRemaining = 120;
+const micSVG = `
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+       viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <rect x="9" y="3" width="6" height="12" rx="3" />
+    <path d="M5 11a7 7 0 0 0 14 0" />
+    <line x1="12" y1="17" x2="12" y2="21" />
+    <line x1="8" y1="21" x2="16" y2="21" />
+  </svg>
+`;
+const micOffSVG = `
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+       viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <rect x="9" y="3" width="6" height="12" rx="3" />
+    <path d="M5 11a7 7 0 0 0 14 0" />
+    <line x1="12" y1="17" x2="12" y2="21" />
+    <line x1="8" y1="21" x2="16" y2="21" />
+    <line x1="4" y1="4" x2="20" y2="20" />
+  </svg>
+`;
+const vidSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+     viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"
+     stroke-linecap="round" stroke-linejoin="round">
+  <path d="M23 7l-7 5 7 5V7z" />
+  <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+</svg>
+`;
+const vidOffSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+     viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"
+     stroke-linecap="round" stroke-linejoin="round">
+  <path d="M23 7l-7 5 7 5V7z" />
+  <path d="M1 5h10m4 0h1a2 2 0 0 1 2 2v8m0 2H5a2 2 0 0 1-2-2V7" />
+  <line x1="1" y1="1" x2="23" y2="23" />
+</svg>
+`;
 // Initialize DOM elements after page load
 function initializeElements() {
     form = document.getElementById("join");
@@ -712,12 +748,16 @@ window.addEventListener("DOMContentLoaded", async ()=>{
     muteAudio.onclick = async ()=>{
         const audioEnabled = !hmsStore.getState((0, _hmsVideoStore.selectIsLocalAudioEnabled));
         await hmsActions.setLocalAudioEnabled(audioEnabled);
-        muteAudio.querySelector('span').textContent = audioEnabled ? "Mute" : "Unmute";
+        const iconContainer = muteAudio.querySelector("svg");
+        iconContainer.outerHTML = audioEnabled ? micSVG : micOffSVG;
+        muteAudio.querySelector("span").textContent = audioEnabled ? "Mute" : "Unmute";
     };
     muteVideo.onclick = async ()=>{
         const videoEnabled = !hmsStore.getState((0, _hmsVideoStore.selectIsLocalVideoEnabled));
         await hmsActions.setLocalVideoEnabled(videoEnabled);
-        muteVideo.querySelector('span').textContent = videoEnabled ? "Hide" : "Unhide";
+        const iconContainer = muteVideo.querySelector("svg");
+        iconContainer.outerHTML = videoEnabled ? vidSVG : vidOffSVG;
+        muteVideo.querySelector("span").textContent = videoEnabled ? "Hide" : "Unhide";
     };
     if (!authToken) {
         console.error("Auth token missing in query params");
