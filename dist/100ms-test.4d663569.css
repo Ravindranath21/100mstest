@@ -197,10 +197,14 @@ form h2, .conference-section h2 {
 
 .peer-name {
   color: #000;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 80%;
   padding: 6px 12px;
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   font-size: 14px;
   font-weight: 600;
+  overflow: hidden;
 }
 
 .peer-tile {

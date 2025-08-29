@@ -222,6 +222,10 @@ form h2,
     "Segoe UI Emoji",
     "Segoe UI Symbol",
     "Noto Color Emoji";
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 80%;
 }
 
 .peer-tile {
