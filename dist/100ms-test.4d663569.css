@@ -5,10 +5,10 @@
 }
 
 body {
-  color: #1a202c;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  flex-direction: column;
   min-height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Inter, sans-serif;
+  margin: 0;
+  display: flex;
 }
 
 h1, h2, h3, h4, h5 {
@@ -18,21 +18,27 @@ h1, h2, h3, h4, h5 {
 
 header {
   backdrop-filter: blur(10px);
-  justify-content: flex-end;
-  gap: 16px, ;
   background: #fffffff2;
   border-bottom: 1px solid #fff3;
   flex-direction: row;
+  justify-content: flex-end;
+  gap: 16px;
   padding: 20px 30px;
   display: flex;
   box-shadow: 0 1px 3px #0000001a;
 }
 
 .header-control-container {
-  flex-direction: row;
-  justify-content: flex-end;
+  backdrop-filter: blur(10px);
+  z-index: 5;
+  background: #fffffff2;
+  border-top: 1px solid #0000001a;
+  justify-content: center;
   gap: 16px;
+  padding: 16px;
   display: flex;
+  position: sticky;
+  bottom: 0;
 }
 
 .btn-danger {
@@ -147,12 +153,6 @@ form h2, .conference-section h2 {
 .conference-section {
   backdrop-filter: blur(20px);
   background: #fffffff2;
-  border: 1px solid #fff3;
-  border-radius: 20px;
-  max-width: 1200px;
-  margin: 20px auto 100px;
-  padding: 30px;
-  box-shadow: 0 20px 40px #0000001a;
 }
 
 .conference-section h2 {
@@ -165,27 +165,26 @@ form h2, .conference-section h2 {
 }
 
 #peers-container {
-  grid-gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  place-items: center;
-  margin-top: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 6px;
+  padding: 6px;
   display: grid;
 }
 
 .peer-video {
   object-fit: cover;
-  border: 3px solid #fff;
-  border-radius: 20px;
-  width: 250px;
-  height: 250px;
-  margin-bottom: 15px;
+  background-color: gray;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  width: 100%;
+  height: auto;
   transition: all .3s;
-  box-shadow: 0 10px 30px #00000026;
 }
 
-.peer-video:hover {
-  transform: scale(1.02);
-  box-shadow: 0 15px 40px #0003;
+#conference {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
 }
 
 .local.peer-video {
@@ -197,23 +196,22 @@ form h2, .conference-section h2 {
 }
 
 .peer-name {
-  text-align: center;
-  color: #4a5568;
-  background: #ffffffe6;
-  border-radius: 20px;
-  padding: 8px 16px;
-  font-size: 16px;
+  color: #000;
+  padding: 6px 12px;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 14px;
   font-weight: 600;
-  box-shadow: 0 2px 10px #0000001a;
 }
 
 .peer-tile {
-  backdrop-filter: blur(10px);
-  background: #fff9;
-  border: 1px solid #fff3;
-  border-radius: 24px;
-  padding: 20px;
-  transition: all .3s;
+  box-shadow: none;
+  background: none;
+  border: 1px solid #0000004d;
+  border-radius: 10px;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0 0 10px;
+  display: flex;
 }
 
 .peer-tile:hover {
@@ -240,9 +238,8 @@ form h2, .conference-section h2 {
 .btn-control {
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: #fff;
+  color: gray;
   cursor: pointer;
-  background: linear-gradient(135deg, #667eea, #764ba2);
   border: none;
   border-radius: 20%;
   flex-direction: column;
@@ -255,12 +252,10 @@ form h2, .conference-section h2 {
   font-weight: 600;
   transition: all .3s;
   display: flex;
-  box-shadow: 0 8px 25px #667eea4d;
 }
 
 .btn-control:hover {
   transform: translateY(-3px)scale(1.05);
-  box-shadow: 0 12px 35px #667eea66;
 }
 
 .btn-control:active {
@@ -407,44 +402,91 @@ form h2, .conference-section h2 {
   color: #f56565;
 }
 
-@media (width <= 768px) {
-  .conference-section {
-    margin: 10px;
-    padding: 20px;
-  }
+.control-bar {
+  gap: 15px;
+  padding: 15px 20px;
+}
 
-  #peers-container {
-    grid-template-columns: 1fr;
-  }
+.btn-control {
+  width: 60px;
+  height: 60px;
+}
 
-  .peer-video {
-    width: 200px;
-    height: 200px;
-  }
+.rejoin-container, .timeout-container {
+  margin: 20px;
+  padding: 40px 30px;
+}
 
-  .control-bar {
-    gap: 15px;
-    padding: 15px 20px;
-    bottom: 20px;
-  }
+.rejoin-container h2, .timeout-container h2 {
+  font-size: 24px;
+}
 
-  .btn-control {
-    width: 60px;
-    height: 60px;
-  }
+.rejoin-btn, .timeout-btn {
+  min-width: 180px;
+  padding: 14px 24px;
+}
 
-  .rejoin-container, .timeout-container {
-    margin: 20px;
-    padding: 40px 30px;
-  }
+.peer-tile.pinned {
+  box-shadow: none;
+  background: none;
+  border: 1px solid #0000004d;
+  border-radius: 10px;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0 0 10px;
+  display: flex;
+}
 
-  .rejoin-container h2, .timeout-container h2 {
-    font-size: 24px;
-  }
+.peer-tile.pinned:hover {
+  background: #fffc;
+  transform: translateY(-5px);
+}
 
-  .rejoin-btn, .timeout-btn {
-    min-width: 180px;
-    padding: 14px 24px;
-  }
+.peer-tile.pinned .peer-video {
+  object-fit: cover;
+  background-color: gray;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  width: 100%;
+  height: auto;
+  transition: all .3s;
+}
+
+.meet-screen {
+  flex-direction: column;
+  flex: 1;
+  display: flex;
+  overflow-y: auto;
+}
+
+.pin-btn {
+  -webkit-backdrop-filter: blur(6px);
+  cursor: pointer;
+  background: #ffffff26;
+  border: 1px solid #ffffff40;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  transition: all .3s;
+  display: flex;
+  box-shadow: 0 4px 8px #0003;
+}
+
+.pin-btn:hover {
+  background: #ffffff40;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px #00000040;
+}
+
+.peer-info-container {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+  padding: 0 6px;
+  display: flex;
 }
 /*# sourceMappingURL=100ms-test.4d663569.css.map */

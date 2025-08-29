@@ -4,31 +4,7 @@
     <meta charset="UTF-8">
   </head>
   <body>
-    <header>
-      <div class="header-control-container">
-        <button id="mute-aud" class="btn-control">
-          <!-- Mic -->
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="9" y="3" width="6" height="12" rx="3"></rect>
-            <path d="M5 11a7 7 0 0 0 14 0"></path>
-            <line x1="12" y1="17" x2="12" y2="21"></line>
-            <line x1="8" y1="21" x2="16" y2="21"></line>
-          </svg>
-
-          <span>Mute</span>
-        </button>
-        <button id="mute-vid" class="btn-control">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-         <path d="M23 7l-7 5 7 5V7z"></path>
-         <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-       </svg>
-       
-          <span>Hide</span>
-        </button>
-        <button id="leave-btn" class="btn-danger">Leave Room</button>
-      </div>
-    </header>
-
+    <div class="meet-screen">
     <div id="rejoin-screen" class="rejoin-screen hide">
       <div class="rejoin-container">
         <div class="rejoin-icon">
@@ -79,10 +55,31 @@
     </div>
 
     <div id="conference" class="conference-section">
-      <h2>Conference</h2>
       <div id="peers-container"></div>
     </div>
+  </div>
+    <div class="header-control-container">
+      <button id="mute-aud" class="btn-control">
+        <!-- Mic -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="9" y="3" width="6" height="12" rx="3"></rect>
+          <path d="M5 11a7 7 0 0 0 14 0"></path>
+          <line x1="12" y1="17" x2="12" y2="21"></line>
+          <line x1="8" y1="21" x2="16" y2="21"></line>
+        </svg>
 
+        <span>Mute</span>
+      </button>
+      <button id="mute-vid" class="btn-control">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+       <path d="M23 7l-7 5 7 5V7z"></path>
+       <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+     </svg>
+     
+        <span>Hide</span>
+      </button>
+      <button id="leave-btn" class="btn-danger">Leave Room</button>
+    </div>
     <script type="module" src="/100ms-test.31b563d9.js"></script>
   
 
